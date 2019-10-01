@@ -1,5 +1,5 @@
-export * from './nest-zero-application';
-export * from './nest-zero-factory';
+export * from './khala-application';
+export * from './khala-factory';
 
-export * from './nest-zero-controller.decorator';
-export * from './nest-zero-command.decorator';
+export * from './khala-controller.decorator';
+export * from './khala-command.decorator';
