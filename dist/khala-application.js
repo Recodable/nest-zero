@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -32,7 +33,9 @@ class KhalaApplication extends core_1.NestApplicationContext {
     addCommand(route, controllerName) {
         const controller = this.get(controllerName);
         const signature = [route.prefix, route.routePath].filter(v => v).join(':');
-        const command = (signature ? this.instance.command(signature) : this.instance);
+        const command = signature
+            ? this.instance.command(signature)
+            : this.instance;
         if (route.description) {
             command.description(route.description);
         }

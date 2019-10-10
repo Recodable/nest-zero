@@ -6,11 +6,22 @@ import { MetadataScanner } from '@nestjs/core/metadata-scanner';
 import { ExceptionsZone } from '@nestjs/core/errors/exceptions-zone';
 import { Logger } from '@nestjs/common';
 
+interface KhalaApplicationOptions {
+  logger: boolean;
+}
+
 export class KhalaFactoryStatic {
-  public async create(module: any, options?): Promise<KhalaApplication> {
+  public async create(
+    module: any,
+    options: KhalaApplicationOptions = { logger: false },
+  ): Promise<KhalaApplication> {
     const config = new ApplicationConfig();
     const container = new NestContainer();
-    Logger.overrideLogger(options.logger)
+
+    if (options.logger) {
+      Logger.overrideLogger(options.logger);
+    }
+
     await this.initialize(module, container, config);
     const instance = new KhalaApplication(container, config, options);
     return instance;

@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -16,11 +17,13 @@ const metadata_scanner_1 = require("@nestjs/core/metadata-scanner");
 const exceptions_zone_1 = require("@nestjs/core/errors/exceptions-zone");
 const common_1 = require("@nestjs/common");
 class KhalaFactoryStatic {
-    create(module, options) {
+    create(module, options = { logger: false }) {
         return __awaiter(this, void 0, void 0, function* () {
             const config = new core_1.ApplicationConfig();
             const container = new core_1.NestContainer();
-            common_1.Logger.overrideLogger(options.logger);
+            if (options.logger) {
+                common_1.Logger.overrideLogger(options.logger);
+            }
             yield this.initialize(module, container, config);
             const instance = new khala_application_1.KhalaApplication(container, config, options);
             return instance;

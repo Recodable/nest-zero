@@ -22,7 +22,7 @@ class RoutesResolver {
             const prefix = Reflect.getMetadata(constants_1.SIGNATURE, metatype);
             this.scanForPaths(instance).forEach(route => {
                 const controllerName = metatype.name;
-                app.addCommand(Object.assign({}, route, { prefix }), controllerName);
+                app.addCommand(Object.assign(Object.assign({}, route), { prefix }), controllerName);
             });
         });
     }
