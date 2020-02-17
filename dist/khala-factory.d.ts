@@ -1,10 +1,13 @@
 import { KhalaApplication } from './khala-application';
 interface KhalaApplicationOptions {
-    logger: boolean;
+  logger: boolean;
 }
 export declare class KhalaFactoryStatic {
-    create(module: any, options?: KhalaApplicationOptions): Promise<KhalaApplication>;
-    private initialize;
+  create(
+    module: any,
+    options?: KhalaApplicationOptions,
+  ): Promise<KhalaApplication>;
+  private initialize;
 }
 export declare const KhalaFactory: KhalaFactoryStatic;
 export {};

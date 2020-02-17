@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dist": "npm run build && cp package* README.md dist && cd dist && npm publish"
+    "dist": "npm run build && cp package* README.md dist && cd dist && npm publish",
+    "format": "prettier --write \"./**/*.ts\""
   },
   "author": "",
   "license": "ISC",

@@ -11,7 +11,7 @@ export function Command(options: string | CommandOptions = '') {
     propertyKey: string,
     descriptor: PropertyDescriptor,
   ) {
-    if (typeof options === "string") {
+    if (typeof options === 'string') {
       options = { signature: options };
     }
     Reflect.defineMetadata(SIGNATURE, options.signature, descriptor.value);
