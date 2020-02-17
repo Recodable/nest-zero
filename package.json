@@ -11,8 +11,8 @@
   "license": "ISC",
   "prettier": "@recodable/prettier-config",
   "dependencies": {
-    "@nestjs/common": "^6.8.3",
-    "@nestjs/core": "^6.8.3",
+    "@nestjs/common": "^6.11.7",
+    "@nestjs/core": "^6.11.7",
     "@recodable/prettier-config": "^1.0.0",
     "@types/node": "^12.7.12",
     "commander": "^3.0.2",
