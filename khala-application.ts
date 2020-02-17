@@ -45,6 +45,12 @@ export class KhalaApplication extends NestApplicationContext {
       command.description(route.description);
     }
 
+    if (route.options) {
+      route.options.forEach(({ flags, description }) => {
+        command.option(flags, description);
+      });
+    }
+
     command.action(controller[route.methodName].bind(controller));
 
     return this;

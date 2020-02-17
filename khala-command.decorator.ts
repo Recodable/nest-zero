@@ -1,8 +1,14 @@
-import { SIGNATURE, DESCRIPTION } from './constants';
+import { SIGNATURE, DESCRIPTION, OPTIONS } from './constants';
+
+export interface Option {
+  flags: string;
+  description: string;
+}
 
 export interface CommandOptions {
   signature: string;
   description?: string;
+  options?: Option[];
 }
 
 export function Command(options: string | CommandOptions = '') {
@@ -16,5 +22,6 @@ export function Command(options: string | CommandOptions = '') {
     }
     Reflect.defineMetadata(SIGNATURE, options.signature, descriptor.value);
     Reflect.defineMetadata(DESCRIPTION, options.description, descriptor.value);
+    Reflect.defineMetadata(OPTIONS, options.options, descriptor.value);
   };
 }
