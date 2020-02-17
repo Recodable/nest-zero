@@ -36,6 +36,7 @@ class RoutesResolver {
         const targetCallback = instancePrototype[methodName];
         const routePath = Reflect.getMetadata(constants_1.SIGNATURE, targetCallback);
         const description = Reflect.getMetadata(constants_1.DESCRIPTION, targetCallback);
+        const options = Reflect.getMetadata(constants_1.OPTIONS, targetCallback);
         if (shared_utils_1.isUndefined(routePath)) {
             return null;
         }
@@ -44,6 +45,7 @@ class RoutesResolver {
             description,
             targetCallback,
             methodName,
+            options,
         };
     }
 }

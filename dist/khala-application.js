@@ -39,6 +39,11 @@ class KhalaApplication extends core_1.NestApplicationContext {
         if (route.description) {
             command.description(route.description);
         }
+        if (route.options) {
+            route.options.forEach(({ flags, description }) => {
+                command.option(flags, description);
+            });
+        }
         command.action(controller[route.methodName].bind(controller));
         return this;
     }

@@ -1,6 +1,4 @@
 export interface ControllerOptions {
-  signature?: string;
+    signature?: string;
 }
-export declare function Controller(
-  options?: string | ControllerOptions,
-): ClassDecorator;
+export declare function Controller(options?: string | ControllerOptions): ClassDecorator;
